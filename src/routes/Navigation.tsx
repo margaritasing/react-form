@@ -4,6 +4,7 @@ import {
   Route,
   NavLink
 } from 'react-router-dom';
+import RegisterPage from '../form/page/RegisterPage';
 
 import logo from '../logo.svg';
 
@@ -15,7 +16,7 @@ export const Navigation = () => {
             <img src={ logo } alt="React Logo" />
           <ul>
             <li>
-              <NavLink to="/" activeClassName="nav-active" exact>Home</NavLink>
+              <NavLink to="/register" activeClassName="nav-active" exact>Register</NavLink>
             </li>
             <li>
               <NavLink to="/about" activeClassName="nav-active" exact>About</NavLink>
@@ -35,8 +36,8 @@ export const Navigation = () => {
           <Route path="/users">
             <h1>Users</h1>
           </Route>
-          <Route path="/">
-            <h1>Home</h1>
+          <Route path="/register">
+            <RegisterPage/>
           </Route>
         </Switch>
       </div>
