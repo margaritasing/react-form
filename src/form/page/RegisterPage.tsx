@@ -10,7 +10,11 @@ const RegisterPage = () => {
     password2:'1234566'
   })
 
-  const { name, email,password1, password2  } = registerData
+  const { name, email,password1, password2  } = registerData;
+
+  const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    
+  }
 
 
 
@@ -21,21 +25,29 @@ const RegisterPage = () => {
             <input 
             type="text"
             placeholder="Name"
+            value={name}
+            onChange={ onChange}
              />
 
         <input 
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={ onChange}
              />
 
         <input 
             type="password"
             placeholder="Password"
+            value={password1}
+            onChange={ onChange}
              />
 
         <input 
             type="password"
             placeholder="Repet Password"
+            value={password2}
+            onChange={ onChange}
              />
 
              <button type='submit'>Create</button>
