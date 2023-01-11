@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import RegisterPage from '../form/page/RegisterPage';
 
+import '../form/styles/styles.css'
+
 import logo from '../logo.svg';
 
 export const Navigation = () => {
