@@ -4,16 +4,25 @@ import { useState } from "react"
 const RegisterPage = () => {
 
   const [registerData, setRegisterData] = useState({
-    name:'Libia',
-    email:'libiamfreitesm@gmail.com',
-    password1:'1234566',
-    password2:'1234566'
+    name:'',
+    email:'',
+    password1:'',
+    password2:''
   })
 
-  const { name, email,password1, password2  } = registerData;
+  const { name, email,password1, password2 } = registerData;
 
-  const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setRegisterData( prev => ({
+        ...prev,
+        [event?.target.name]: event?.target.value        
+      }))    
+  }
+
+  const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    console.log(registerData)
   }
 
 
@@ -21,8 +30,9 @@ const RegisterPage = () => {
   return (
     <div>
         <h1>Register Page</h1>
-        <form>
+        <form noValidate onSubmit={ onSubmit } >
             <input 
+            name="name"
             type="text"
             placeholder="Name"
             value={name}
@@ -30,6 +40,7 @@ const RegisterPage = () => {
              />
 
         <input 
+            name="email"
             type="email"
             placeholder="Email"
             value={email}
@@ -37,6 +48,7 @@ const RegisterPage = () => {
              />
 
         <input 
+            name="password1"
             type="password"
             placeholder="Password"
             value={password1}
@@ -44,6 +56,7 @@ const RegisterPage = () => {
              />
 
         <input 
+            name="password2"
             type="password"
             placeholder="Repet Password"
             value={password2}
