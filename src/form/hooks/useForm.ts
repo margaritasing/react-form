@@ -27,7 +27,9 @@ export const useForm = <T>( initState: T ) => {
     formData,
 
 
-    onChange
+    onChange,
+    resetForm,
+    isValidEmail
 
   }
 }
