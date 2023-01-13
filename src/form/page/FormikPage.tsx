@@ -19,21 +19,21 @@ const FormikPage = () => {
     }
 
     if (!lastName) {
-        errors.firstName = 'Required'
-    }else if ( lastName.length > 20){
+        errors.lastName = 'Required'
+    }else if ( lastName.length > 15){
         errors.lastName = 'Must be 15 characters or less'
     }
 
-    if (!values.email) {
-        errors.firstName = 'Required'
-    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+    if (!email) {
+        errors.email = 'Required'
+    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)){
         errors.email = 'Invalid email address'
     }
 
         return errors
   }
 
-  const { handleChange, values, handleSubmit } = useFormik({
+  const { handleChange, values, handleSubmit, errors } = useFormik({
     initialValues:{
         firstName: '',
         lastName: '',
@@ -41,7 +41,8 @@ const FormikPage = () => {
     },
     onSubmit: (values) =>{
         console.log(values)
-    }
+    },
+    validate
   })
   return (
     <div>
@@ -54,7 +55,7 @@ const FormikPage = () => {
                 onChange={ handleChange }
                 value={ values.firstName }
              />
-             <span>First Name Is Require</span>
+             { errors.firstName && <span>{ errors.firstName }</span>}
 
             <label htmlFor="lastName">Last Name</label>
             <input 
@@ -63,7 +64,7 @@ const FormikPage = () => {
                 onChange={ handleChange }
                 value={ values.lastName }
              />
-              <span>Last Name Is Require</span>
+               { errors.lastName && <span>{ errors.lastName }</span>}
 
             <label htmlFor="email">Email Address</label>
             <input 
@@ -72,6 +73,7 @@ const FormikPage = () => {
                 onChange={ handleChange }
                 value={ values.email }
              />
+               { errors.firstName && <span>{ errors.firstName }</span>}
               <span>Email Is Require</span>
               <span>Check for an valid email format</span>
 
