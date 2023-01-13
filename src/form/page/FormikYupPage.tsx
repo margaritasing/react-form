@@ -1,4 +1,5 @@
 import { Formik, FormikErrors, useFormik  } from 'formik'
+import * as Yup from 'yup'
 import '../styles/styles.css'
 
 interface FormValues {
@@ -7,31 +8,7 @@ interface FormValues {
     email: string
 }
 
-const FormikYupPage = () => {
-
-  const validate = ( { firstName, lastName, email  }: FormValues ) => {
-    const errors: FormikErrors<FormValues> = { }
-
-    if (!firstName) {
-        errors.firstName = 'Required'
-    }else if ( firstName.length > 15){
-        errors.firstName = 'Must be 15 characters or less'
-    }
-
-    if (!lastName) {
-        errors.lastName = 'Required'
-    }else if ( lastName.length > 15){
-        errors.lastName = 'Must be 15 characters or less'
-    }
-
-    if (!email) {
-        errors.email = 'Required'
-    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)){
-        errors.email = 'Invalid email address'
-    }
-
-        return errors
-  }
+const FormikYupPage = () => {  
 
   const { handleChange, values, handleSubmit, errors, touched, handleBlur } = useFormik({
     initialValues:{
@@ -42,11 +19,18 @@ const FormikYupPage = () => {
     onSubmit: (values) =>{
         console.log(values)
     },
-    validate
+
+    validationSchema: Yup.object({
+        firstName: Yup.string()
+                            .max(15, 'Debe tener 15 caracteres o menos')
+                            .required('Requerido')
+        
+    })
+   
   })
   return (
     <div>
-        <h1>Formik Basic Tutorial</h1>
+        <h1>Formik Yup Tutorial</h1>
         <form onSubmit={ handleSubmit } noValidate>
             <label htmlFor="firstname">First Name</label>
             <input 
