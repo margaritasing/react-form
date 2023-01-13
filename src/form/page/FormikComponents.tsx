@@ -1,52 +1,56 @@
-import { useFormik  } from 'formik'
+import { Formik, Form, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import '../styles/styles.css'
 
 
-const FormikComponents = () => {  
-
-  const { handleSubmit, errors, touched,getFieldProps } = useFormik({
-    initialValues:{
-        firstName: '',
-        lastName: '',
-        email:'',
-    },
-    onSubmit: (values) =>{
-        console.log(values)
-    },
-
-    validationSchema: Yup.object({
-        firstName: Yup.string()
-                            .max(15, 'Debe tener 15 caracteres o menos')
-                            .required('Requerido'),
-        lastName: Yup.string()
-                            .max(15, 'Debe tener 15 caracteres o menos')
-                            .required('Requerido'),
-        email: Yup.string()
-                            .email('No es un email valido')
-                            .required('Requerido')        
-    })
+const FormikComponents = () => {     
    
-  })
+  
   return (
     <div>
         <h1>Formik Yup Tutorial</h1>
-        <form onSubmit={ handleSubmit } noValidate>
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" {...getFieldProps('firstName')}/>
-             { touched.firstName && errors.firstName && <span>{ errors.firstName }</span>}
 
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" {...getFieldProps('lastName')}/>          
-              { touched.lastName && errors.lastName && <span>{ errors.lastName }</span>}
+        <Formik
+          initialValues={{
+            firstName: '',
+            lastName: '',
+            email:'',
+          }}
+          onSubmit={(values) => {
+            console.log(values)
+          }}
+          validationSchema={Yup.object({
+                firstName: Yup.string()
+                                    .max(15, 'Debe tener 15 caracteres o menos')
+                                    .required('Requerido'),
+                lastName: Yup.string()
+                                    .max(15, 'Debe tener 15 caracteres o menos')
+                                    .required('Requerido'),
+                email: Yup.string()
+                                    .email('No es un email valido')
+                                    .required('Requerido')        
+          })}
+        >
 
-            <label htmlFor="email">Email Address</label>
-            <input type="text" {...getFieldProps('email')}/>            
-              { touched.email && errors.email && <span>{ errors.email }</span>}      
+          {
+            (formik) => (
+              <Form>             
+              <Field name="firstName" type="text" placeholder="FirstName"  />
+              <ErrorMessage name="firstName" component="span" />   
 
-             <button type='submit'>Submit</button>
+              <Field name="lastName" type="text" placeholder="LastName"/>        
+              <ErrorMessage name="lastName" component="span" />    
 
-        </form>
+              <Field name="email" type="email" placeholder="Email"/>          
+              <ErrorMessage name="email" component="span" />   
+  
+               <button type='submit'>Submit</button>  
+          </Form>
+
+            )
+          }          
+        </Formik>
+       
     </div>
   )
 }
