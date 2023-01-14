@@ -8,7 +8,8 @@ import { FormikAbstract,
          FormikPage, 
          FormikComponents, 
          FormikYupPage, 
-         RegisterPage 
+         RegisterPage,
+         RegisterFormik         
         } from '../form/page'
 
 import '../form/styles/styles.css'
@@ -37,6 +38,9 @@ export const Navigation = () => {
             <li>
               <NavLink to="/formitabstract" activeClassName="nav-active" exact>Formik-Abstract</NavLink>
             </li>
+            <li>
+              <NavLink to="/formikregister" activeClassName="nav-active" exact>Formik-Register</NavLink>
+            </li>
           </ul>
         </nav>
 
@@ -57,6 +61,9 @@ export const Navigation = () => {
           </Route>
           <Route path="/formitabstract">
             <FormikAbstract/>
+          </Route>
+          <Route path="/formikregister">
+            <RegisterFormik/>
           </Route>
         </Switch>
       </div>
