@@ -17,7 +17,7 @@ export const RegisterFormik = () => {
 
 return (
 <div>
-<h1>Register fORMIK Page</h1>
+<h1>Register Formit Page</h1>
   <Formik
     initialValues={{
       name:'',
@@ -43,12 +43,12 @@ return (
         password2:Yup.string()
               .required('Requerido')
               .min(6, 'La contraseña debe tener minimo 6 caracteres')
-              .oneOf([Yup.ref('password1') ], 'lAS CONTRASEÑAS NO SON IGUALES')
+              .oneOf([Yup.ref('password1') ], 'las contraseñas no son iguales')
        })
     }
      >
       {
-        (formik) => (
+        ({handleReset }) => (
           <Form>
             <MyTextInput
              label="Nombre"
@@ -67,13 +67,13 @@ return (
              placeholder="Contraseña"
              />
              <MyTextInput
-             label="Repetir Password"
+             label="Confirmar Password"
              type="password"
              name="password2"
-             placeholder="Repetir Contraseña"
+             placeholder="Confirmar Contraseña"
              />
             <button type='submit'>Create</button>
-          {/*   <button type='button' onClick={resetForm}>Reset</button> */}
+            <button type='button' onClick={handleReset}>Reset</button>
           </Form>
         )}
     
