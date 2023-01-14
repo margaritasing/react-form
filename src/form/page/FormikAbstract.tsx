@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import '../styles/styles.css'
 
 
-const FormikComponents = () => {     
+const FormikAbstract = () => {     
    
   
   return (
@@ -78,4 +78,4 @@ const FormikComponents = () => {
   )
 }
 
-export default FormikComponents
+export default FormikAbstract
