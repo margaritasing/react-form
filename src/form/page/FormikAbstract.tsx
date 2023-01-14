@@ -8,7 +8,7 @@ const FormikAbstract = () => {
   
   return (
     <div>
-        <h1>Formik Yup Tutorial</h1>
+        <h1>Formik Abstract</h1>
 
         <Formik
           initialValues={{
