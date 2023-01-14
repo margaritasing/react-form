@@ -1,7 +1,9 @@
-import { Formik, Form, Field, ErrorMessage} from 'formik'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import MyTextInput from '../components/MyTextInput'
+import MySelect from '../components/MySelect'
 import '../styles/styles.css'
+import MyCheckBox from '../components/MyCheckBox'
 
 
 const FormikAbstract = () => {     
@@ -45,24 +47,17 @@ const FormikAbstract = () => {
                 <MyTextInput label="firstName" name="firstName" type="text" placeholder="First Name" /> 
                 <MyTextInput label="lastName" name="lastName" type="text" placeholder="Last Name" />     
                 <MyTextInput label="email" name="email" type="email" placeholder="Email" />               
-                
-                <label htmlFor="jodType">Job Type</label>
-                <Field name="jodType" as="select" >
+                             
+                <MySelect label="Job Type" name="jodType">
                   <option value="">Pick something</option>
                   <option value="developer">Developer</option>
                   <option value="designer">Designer</option>
                   <option value="it-senior">IT Senior</option>
                   <option value="it-junior">IT Junior</option>
-                </Field>
-                <ErrorMessage name="jodType" component="span" />  
+                </MySelect>
 
-
-              <label>
-                Terms and conditions
-              <Field name="terms" type="checkbox"/>          
-                </label>
-              <ErrorMessage name="terms" component="span" />  
-  
+                <MyCheckBox label="Terms and conditions"  name="terms"/>         
+             
                <button type='submit'>Submit</button>  
           </Form>
 

@@ -17,7 +17,7 @@ const MySelect = ({ label, ...props }: Props ) => {
   return (
     <>
         <label htmlFor={ props.id || props.name }></label>
-        <input className="text" {... field} {...props} />
+        <select {...field } {...props} />
        {
         meta.touched && meta.error && (
             <span className="error">{ meta.error }</span>
