@@ -45,15 +45,7 @@ const FormikAbstract = () => {
                 <MyTextInput label="firstName" name="firstName" type="text" placeholder="First Name" /> 
                 <MyTextInput label="lastName" name="lastName" type="text" placeholder="Last Name" />     
                 <MyTextInput label="email" name="email" type="email" placeholder="Email" />               
-                <Field name="firstName" type="text" placeholder="First Name"  />
-                <ErrorMessage name="firstName" component="span" />   
-
-                <Field name="lastName" type="text" placeholder="Last Name"/>        
-                <ErrorMessage name="lastName" component="span" />    
-
-                <Field name="email" type="email" placeholder="Email"/>          
-                <ErrorMessage name="email" component="span" />  
-
+                
                 <label htmlFor="jodType">Job Type</label>
                 <Field name="jodType" as="select" >
                   <option value="">Pick something</option>
