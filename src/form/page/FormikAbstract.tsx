@@ -5,7 +5,7 @@ import { MyCheckBox, MyTextInput, MySelect  } from '../components'
 import '../styles/styles.css'
 
 
-const FormikAbstract = () => {     
+export const FormikAbstract = () => {     
    
   
   return (
@@ -68,4 +68,3 @@ const FormikAbstract = () => {
   )
 }
 
-export default FormikAbstract

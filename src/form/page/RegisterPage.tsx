@@ -1,7 +1,7 @@
 import { useForm } from "../hooks/useForm"
 
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
 
   const { formData, 
           onChange, 
@@ -77,4 +77,3 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
