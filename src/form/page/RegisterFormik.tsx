@@ -1,79 +1,89 @@
+import { Form, Formik } from "formik"
 import { useForm } from "../hooks/useForm"
+import * as Yup from 'yup'
+import { MyTextInput } from "../components"
+
 
 
 export const RegisterFormik = () => {
 
-  const { formData, 
-          onChange, 
-          name, 
-          email,
-          password1, 
-          password2, 
-          resetForm,
-          isValidEmail
-        } = useForm({
-                    name:'',
-                    email:'',
-                    password1:'',
-                    password2:''
-        });
 
-  const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    console.log(formData)
-  }
+             /*  name:'',
+              email:'',
+              password1:'',
+              password2:'' */
+ 
 
-  return (
-    <div>
-        <h1>Register Formik</h1>
-        <form noValidate onSubmit={ onSubmit } >
-            <input 
-            name="name"
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={ onChange}
-            className={`${ name.trim().length <= 0 && 'has-error' }`}
+
+return (
+<div>
+<h1>Register fORMIK Page</h1>
+  <Formik
+    initialValues={{
+      name:'',
+      email:'',
+      password1:'',
+      password2:''    
+     }}
+     onSubmit ={ (values) => {
+        console.log(values)
+     }}
+    validationSchema={
+       Yup.object({
+        name: Yup.string()
+              .min(2, 'Nombre debe contener mas de dos letras')
+              .max(15, 'El nombre no puede tener mas de 15 letras')
+              .required('Requerido'),
+        email: Yup.string()
+              .email('No es un email valido')
+              .required('Requerido'),      
+        password1:Yup.string()
+              .required('Requerido')
+              .min(6, 'La contraseña debe tener minimo 6 caracteres'),
+        password2:Yup.string()
+              .required('Requerido')
+              .min(6, 'La contraseña debe tener minimo 6 caracteres')
+              .oneOf([Yup.ref('password1') ], 'lAS CONTRASEÑAS NO SON IGUALES')
+       })
+    }
+     >
+      {
+        (formik) => (
+          <Form>
+            <MyTextInput
+             label="Nombre"
+             name="name"
+             placeholder="Nombre"
              />
-             { name.trim().length <= 0 && <span>Este campo es obligatorio</span>}
-
-        <input 
-            name="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={ onChange}
-            className={`${ !isValidEmail(email) && 'has-error' }`}
+             <MyTextInput
+             label="Correo"
+             name="email"
+             placeholder="Correo"
              />
-              { !isValidEmail(email)  && <span>Este email no es valido</span>}
-
-        <input 
-            name="password1"
-            type="password"
-            placeholder="Password"
-            value={password1}
-            onChange={ onChange}
-            className={`${ password1.trim().length <= 0 && 'has-error' }`}
+             <MyTextInput
+             label="Password"
+             type="password"
+             name="password1"
+             placeholder="Contraseña"
              />
-             { password1.trim().length <= 0 && <span>Este campo es obligatorio</span>}
-             { password1.trim().length <  6 && password1.trim().length > 0 && <span>La contraseña debe tener 6 caracteres </span>}
-
-        <input 
-            name="password2"
-            type="password"
-            placeholder="Repet Password"
-            value={password2}
-            onChange={ onChange}
-            className={`${ password2.trim().length <= 0 && 'has-error' }`}
+             <MyTextInput
+             label="Repetir Password"
+             type="password"
+             name="password2"
+             placeholder="Repetir Contraseña"
              />
-             { password2.trim().length <= 0 && <span>Este campo es obligatorio</span>}
-             { password2.trim().length > 0 && password2 !== password1  && <span>Las contraseña debe ser igual</span>}
+            <button type='submit'>Create</button>
+          {/*   <button type='button' onClick={resetForm}>Reset</button> */}
+          </Form>
+        )}
+    
 
 
-             <button type='submit'>Create</button>
-             <button type='button' onClick={resetForm}>Reset</button>
-        </form>
-    </div>
-  )
+  </Formik>
+ 
+
+  
+</div>
+)
 }
 
