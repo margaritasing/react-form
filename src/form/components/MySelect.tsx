@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-const MySelect = ({ label, ...props }: Props ) => {
+ export const MySelect = ({ label, ...props }: Props ) => {
 
    const [ field, meta  ] =  useField(props)
 
@@ -29,4 +29,4 @@ const MySelect = ({ label, ...props }: Props ) => {
   )
 }
 
-export default MySelect
+

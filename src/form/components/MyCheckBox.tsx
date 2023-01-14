@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-const MyCheckBox = ({ label, ...props }: Props ) => {
+ export const MyCheckBox = ({ label, ...props }: Props ) => {
 
    const [ field, meta  ] =  useField({...props, type: 'checkbox' })
 
@@ -31,4 +31,3 @@ const MyCheckBox = ({ label, ...props }: Props ) => {
   )
 }
 
-export default MyCheckBox

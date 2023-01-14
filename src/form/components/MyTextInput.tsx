@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-const MyTextInput = ({ label, ...props }: Props ) => {
+export  const MyTextInput = ({ label, ...props }: Props ) => {
 
    const [ field, meta  ] =  useField(props)
 
@@ -29,4 +29,3 @@ const MyTextInput = ({ label, ...props }: Props ) => {
   )
 }
 
-export default MyTextInput
