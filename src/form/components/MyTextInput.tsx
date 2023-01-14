@@ -9,15 +9,20 @@ interface Props {
 }
 
 
-const MyTextInput = (props: Props ) => {
+const MyTextInput = ({ label, ...props }: Props ) => {
 
-   const [  ] =  useField()
+   const [ field, meta  ] =  useField(props)
 
 
   return (
     <>
-     <label htmlFor=""></label>
-       
+        <label htmlFor={ props.id || props.name }></label>
+        <input className="text" {... field} {...props} />
+       {
+        meta.touched && meta.error && (
+            <span className="error">{ meta.error }</span>
+        )
+       }
     
     
     </>

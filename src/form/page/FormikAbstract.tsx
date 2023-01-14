@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
+import MyTextInput from '../components/MyTextInput'
 import '../styles/styles.css'
 
 
@@ -40,25 +41,28 @@ const FormikAbstract = () => {
 
           {
             (formik) => (
-              <Form>             
-              <Field name="firstName" type="text" placeholder="First Name"  />
-              <ErrorMessage name="firstName" component="span" />   
+              <Form>  
+                <MyTextInput label="firstName" name="firstName" type="text" placeholder="First Name" /> 
+                <MyTextInput label="lastName" name="lastName" type="text" placeholder="Last Name" />     
+                <MyTextInput label="email" name="email" type="email" placeholder="Email" />               
+                <Field name="firstName" type="text" placeholder="First Name"  />
+                <ErrorMessage name="firstName" component="span" />   
 
-              <Field name="lastName" type="text" placeholder="Last Name"/>        
-              <ErrorMessage name="lastName" component="span" />    
+                <Field name="lastName" type="text" placeholder="Last Name"/>        
+                <ErrorMessage name="lastName" component="span" />    
 
-              <Field name="email" type="email" placeholder="Email"/>          
-              <ErrorMessage name="email" component="span" />  
+                <Field name="email" type="email" placeholder="Email"/>          
+                <ErrorMessage name="email" component="span" />  
 
-              <label htmlFor="jodType">Job Type</label>
-              <Field name="jodType" as="select" >
-                <option value="">Pick something</option>
-                <option value="developer">Developer</option>
-                <option value="designer">Designer</option>
-                <option value="it-senior">IT Senior</option>
-                <option value="it-junior">IT Junior</option>
-              </Field>
-              <ErrorMessage name="jodType" component="span" />  
+                <label htmlFor="jodType">Job Type</label>
+                <Field name="jodType" as="select" >
+                  <option value="">Pick something</option>
+                  <option value="developer">Developer</option>
+                  <option value="designer">Designer</option>
+                  <option value="it-senior">IT Senior</option>
+                  <option value="it-junior">IT Junior</option>
+                </Field>
+                <ErrorMessage name="jodType" component="span" />  
 
 
               <label>
